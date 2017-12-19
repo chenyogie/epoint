@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <title>布局案例</title>
+</head>
+
+<body>
+    <div class="project-main">
+        <!-- 我的签收 -->
+        <div class="info-head clearfix">
+            <h5>待签收</h5>
+        </div>
+        <div class="info-bd">
+            <div class="state clearfix" id="tool-bar">
+                <button class="state-btn all cur">全部</button>
+                <button class="state-btn sign">待签收</button>
+                <button class="state-btn signed">已签收</button>
+                <div class="search-bar">
+                    <input type="text" class="input" placeholder="请输入关键字">
+                    <button class="btn" title="点击搜索"></button>
+                </div>
+            </div>
+            <div class="project-con">
+                <ul class="project-list" id="project-list">
+                    <li class="project-list-item accept">
+                        <div class="project-head clearfix">
+                            <span class="code">运单号：STD201601060002</span>
+                            <span class="applytime">发出时间：2016-9-9 09:00</span>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-body-row clearfix">
+                                事项名称：<a href="#" target="_blank">道路客货运输经营（危险货物运输除外）驾驶人员从业资格的许可</a>
+                            </p>
+                            <p class="project-body-row clearfix">
+                                <span class="window">窗口部门：交通局<i class="window-no">55120334</i></span>
+                                <span class="recipient">接件人：张三</span>
+                                <a href="#" class="sign-btn">签收</a>
+                            </p>
+                            <p class="project-body-row note">
+                                注：许可法规定如发生材料补正，受理时间将以补正后的时间重新计算，否则按照承诺时间计算
+                            </p>
+                        </div>
+                    </li>
+                    <li class="project-list-item accept">
+                        <div class="project-head clearfix">
+                            <span class="code">运单号：STD201601060002</span>
+                            <span class="applytime">发出时间：2016-9-9 09:00</span>
+                            <span class="pstate">签收状态：<em>已签收</em></span>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-body-row clearfix">
+                                事项名称：<a href="#" target="_blank">道路客货运输经营（危险货物运输除外）驾驶人员从业资格的许可</a>
+                            </p>
+                            <p class="project-body-row clearfix">
+                                <span class="window">窗口部门：交通局<i class="window-no">55120334</i></span>
+                                <span class="recipient">接件人：张三</span>
+                            </p>
+                            <p class="project-body-row note">
+                                注：许可法规定如发生材料补正，受理时间将以补正后的时间重新计算，否则按照承诺时间计算
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 分页 -->
+            <div class="pager clearfix">
+                <div class="r" id="pager"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

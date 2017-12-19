@@ -1,0 +1,244 @@
+/**!
+ * 镇江e办事项目-我的签收
+ * author: xx;
+ * date: 20160714
+ */
+
+
+
+.info-head {
+    height: 38px;
+    margin: 0 10px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.info-head h5 {
+    float: left;
+    padding: 0 5px;
+    color: #0e65af;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 38px;
+    height: 36px;
+    border-bottom: 3px solid #0e65af;
+}
+
+/* 我的评价 */
+
+.project-main {
+    height: 950px;
+}
+
+.info-bd {
+    padding: 0 20px;
+}
+
+.state {
+    height: 32px;
+    padding: 10px 0 10px 0;
+}
+
+.state-btn {
+    float: left;
+    height: 23px;
+    min-width: 72px;
+    line-height: 23px;
+    margin: 4px 10px 0 0;
+    border: 0;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.state-btn.all {
+    background-color: #287ec6;
+}
+
+.state-btn.evaluate,
+.state-btn.sign {
+    background-color: #72c9a5;
+}
+
+.state-btn.evaluated,
+.state-btn.signed {
+    background-color: #eb9797;
+}
+
+.state-btn.all:hover,
+.state-btn.all.cur {
+    background-color: #1265ab;
+}
+
+.state-btn.evaluate:hover,
+.state-btn.evaluate.cur,
+.state-btn.sign:hover,
+.state-btn.sign.cur {
+    background-color: #57b48e;
+}
+
+.state-btn.evaluated:hover,
+.state-btn.evaluated.cur,
+.state-btn.signed:hover,
+.state-btn.signed.cur {
+    background-color: #e48989;
+}
+
+.search-bar {
+    float: right;
+    width: 250px;
+    height: 32px;
+}
+
+.search-bar .input {
+    float: left;
+    width: 195px;
+    height: 30px;
+    padding-left: 12px;
+    border: 1px solid #d2d3d6;
+    border-right: 0;
+    line-height: 30px;
+}
+
+.search-bar .btn {
+    float: left;
+    width: 42px;
+    height: 32px;
+    border: 0;
+    cursor: pointer;
+    background: url(../images/icon-search.png) 12px 7px no-repeat #287ec6;
+}
+
+.search-bar .btn:hover {
+    background-color: #1265ab;
+}
+
+
+/* project-list */
+
+.project-list-item {
+    color: #373737;
+}
+
+.project-list-item .project-head {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+.project-list-item .project-head {
+    background-color: #e4ecf7;
+}
+
+.project-head .code,
+.project-head .applytime,
+.project-body .window,
+.project-body .recipient {
+    float: left;
+}
+
+.project-head .pstate,
+.project-body .finish {
+    float: right;
+}
+
+.project-head .code {
+    width: 210px;
+}
+
+.project-head .pstate,
+.project-body .finish {
+    width: 158px;
+}
+
+.project-body .window {
+    width: 352px;
+}
+
+.project-body .window i {
+    margin-left: 20px;
+    font-style: normal;
+}
+
+.project-body .evaluate-btn {
+    float: right;
+    width: 154px;
+}
+
+.project-body .evaluate-btn a {
+    color: #0068b7;
+}
+
+.project-body-row .sign-btn {
+	float: right;
+	width: 79px;
+	height: 28px;
+	background-color: #f7921e;
+	color: #fff;
+	text-align: center;
+	border-radius: 14px;
+}
+
+.project-body-row .sign-btn:hover {
+	background-color: #f37200;
+}
+
+.project-list-item .project-body {
+    padding: 6px 0 18px 0;
+    line-height: 28px;
+}
+
+.project-body-row.note {
+    color: #d51311;
+}
+
+.project-body-row.note span {
+    color: #333;
+}
+
+.project-body-row .finish {
+    padding-left: 29px;
+    width: 129px;
+    background: url(../images/percenter/icon-clock.png) 0 center no-repeat;
+}
+
+.project-body-row .finish .day {
+    color: #d51311;
+    font-style: normal;
+}
+
+
+/* 分页的位置 */
+
+.pager {
+    height: 26px;
+    line-height: 26px;
+    padding: 12px 0 20px 0;
+}
+
+.pager .m-pagination-page {
+    /*float: right;*/
+}
+
+/* 我的预约 */
+
+.appoint-list-item {
+	background-color: #f4f4f4;
+	padding: 7px 15px 9px 16px;
+	border-bottom: 10px solid #fff;
+	line-height: 28px;
+}
+
+.appoint-list-item .appoint-time {
+	color: #287ec6;
+}
+
+.appoint-list-item .appoint-btn {
+	float: right;
+}
+
+.appoint-list-item .appoint-btn a {
+	color: #f7921e;
+}

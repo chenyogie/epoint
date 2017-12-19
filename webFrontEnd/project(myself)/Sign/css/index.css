@@ -1,0 +1,120 @@
+body{
+    font-family: "Microsoft YaHei UI";
+    color: #333;
+    font-size: 14px;
+}
+.head-info{
+    height: 38px;
+    margin: 0px 10px;
+    border-bottom: 1px solid #d1d1d1;
+}
+.head-info h4{
+    float: left;/*why?*/
+    height: 36px;
+    line-height: 38px;
+    color: #0e65af;
+    font-size: 17px;
+    font-weight: bold;
+    padding:0 15px;
+    border-bottom: 3px solid #0e65af;
+}
+.info_bd{
+    padding: 0px 10px;
+}
+.btn{
+    height: 32px;
+    padding: 10px 0px 10px 0px;
+}
+.state-btn{
+    float: left;
+    width: 72px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    margin:4px 0px 0px 10px;
+    border: 0px;
+    border-radius: 3px;
+}
+.all{
+    background-color: #287fc7;
+}
+.receive{
+    background-color: #70c8a3;
+}
+.received{
+    background-color: #ea9897;
+}
+.search{
+    float: right;
+    height: 32px;
+    width: 250px;
+    margin-right: 10px;
+}
+.txt-input{
+    float: left;
+    display: block;
+    height: 30px;
+    line-height: 32px;
+    border:1px solid #d2d3d6;;
+    width: 200px;
+    border-right: 0px;
+}
+.btn-search{
+    float: left;
+    width: 40px;
+    height: 32px;
+    line-height: 32px;
+    border: 0px;
+    background: url("../images/icon-search.png") center no-repeat #287fc7;
+}
+.pro-content{
+    margin:0px 20px 0px 10px;
+}
+.list-item{
+    padding-bottom: 18px;
+}
+.pro-head{
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 0px 0px 10px;
+    background-color: #e3edf7;
+}
+.code,
+.date{
+    float: left;
+}
+.code{
+    width: 212px;
+}
+.pro-body{
+    margin-top: 6px;
+}
+.body-row{
+    height: 28px;
+    line-height: 28px;
+}
+.row-window,
+.row-sign{
+    float: left;
+}
+.row-window{
+    width: 352px;
+}
+.window-no{
+    margin-left: 20px;
+}
+.row-signed{
+    float: right;
+    width:80px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #f7931e;
+    border-radius: 7px;
+}
+.note{
+    color: #d51311; ;
+}
+.state-sign{
+    float: right;
+    margin-right: 46px;
+}

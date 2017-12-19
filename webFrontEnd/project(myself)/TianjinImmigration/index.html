@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <!--<script src="js/jquery-1.11.0.min.js"></script>-->
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/mustache.js"></script>
+    <link rel="stylesheet" href="js/pagination/mricode.pagination.css"/>
+    <script src="js/pagination/mricode.pagination.js"></script>
+    <title>信息共享平台</title>
+</head>
+
+<body>
+
+<div class="main">
+    <!--头部区域-->
+    <div class="header-bg clearfix">
+        <div class="container header">
+            <div class="logo"></div>
+            <ul class="navs-list">
+                <li class="navs-item"><a href="#">首页</a></li>
+                <li class="navs-item"><a href="#">目录</a></li>
+                <li class="navs-item"><a href="#">职能</a></li>
+                <li class="navs-item"><a href="#">处室</a></li>
+                <li class="navs-item"><a href="#">API</a></li>
+                <li class="navs-item"><a href="#">反馈</a></li>
+            </ul>
+            <div class="user-icon clearfix">
+                <div class="user-img"></div>
+                <div class="user-txt">欢迎您,张三!</div>
+            </div>
+        </div>
+    </div>
+    <!--内容区域-->
+    <div class="container contont">
+        <!--索引栏-->
+        <div class="con-loc">
+            <div class="loc-item loc-img"></div>
+            <div class="loc-item">当前位置：</div>
+            <div class="loc-item">&nbsp&nbsp首页&nbsp&nbsp/</div>
+            <div class="loc-item loc-label">&nbsp&nbspAPI</div>
+        </div>
+        <!--导航栏-->
+        <div class="con-navs clearfix">
+            <div class="con-navs-title">
+                <label>服务</label><br>
+                <label>分类</label>
+            </div>
+            <ul class="con-navs-list clearfix">
+                <li class="con-navs-item first-item">
+                    <a class="con-a" href="#">全部</a>
+                </li>
+                <li class="con-navs-item">
+                    <a class="con-a" href="#">服务分类一</a>
+                </li>
+                <li class="con-navs-item">
+                    <a class="con-a" href="#">服务分类二</a>
+                </li>
+                <li class="con-navs-item">
+                    <a class="con-a" href="#">服务分类三</a>
+                </li>
+                <li class="con-navs-item">
+                    <a class="con-a" href="#">服务分类四</a>
+                </li>
+                <li class="con-navs-item">
+                    <a class="con-a" href="#">服务分类五</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container con">
+            <div class="con-head">
+                <label>排序方式：
+                    <select name="select-item" id="selectid">
+                        <option value="hot">最新</option>
+                        <option value="new">最热</option>
+                    </select>
+                </label>
+            </div>
+            <!--内容列表-->
+            <div id="ajaxdata" class="con-list">
+                <!--<div  class="con-list-item">-->
+                    <!--<div class="item-left">-->
+                        <!--<div class="item-title">支持国家战略、新业态发展检验检疫政策相关材料</div>-->
+                        <!--<div class="item-txt">7.5万车辆图片库，标注车牌、拍摄时间、车型、颜色、车身等属性、覆盖100辆车，可用于车辆识别、自动驾驶、违章行为监控、车量跟踪等</div>-->
+                    <!--</div>-->
+                    <!--<div class="item-right">-->
+                        <!--<button class="con-btn">申请</button>-->
+                        <!--<button class="con-btn">收藏</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <!--分页-->
+            <div class="page-div">
+                <div id="page" class="m-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <!--页尾区域-->
+    <div class="footer">
+    </div>
+</div>
+
+<script src="js/index.js"></script>
+</body>
+
+</html>
