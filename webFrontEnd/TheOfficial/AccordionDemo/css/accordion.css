@@ -1,0 +1,45 @@
+/*!
+ * 手风琴demo
+ * author: xiaolong
+ * date: 20161112;
+ */
+
+.accordion-wrap {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.acc-head {
+	height: 24px;
+	position: relative;
+	padding: 6px 0;
+	line-height: 24px;
+	font-size: 16px;
+	font-family: "Microsoft Yahei";
+	color: orange;
+	border-bottom: 1px solid orange;
+}
+
+.acc-head .order {
+	float: left;
+	width: 24px;
+	padding: 0 6px;
+	font-style: italic;
+}
+
+.acc-head .icon-toggle {
+	position: absolute;
+	top: 8px;
+	right: 6px;
+	width: 20px;
+	height: 20px;
+	background: url(../images/switch.png);
+}
+
+.accordion-item.closed .acc-body {
+	display: none;
+}
+
+.accordion-item.closed .icon-toggle {
+	background-position: 0 -30px;
+}

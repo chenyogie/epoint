@@ -1,0 +1,120 @@
+/**!
+ * [页面名称]
+ * date:2017-01-01
+ * author: [xx];
+ */
+ 
+ .big_container{
+ 	background-color: #397ddb;
+ 	height: 72px;
+ }
+
+ .container{
+ 	margin:0 auto;
+ 	width: 1080px;
+ 	height: 1000px;
+ 	text-align:center;
+ 	background-color: #aaaaaa;
+ 	
+ }
+
+.head_word{
+	float: left;
+	padding-left: 18px;
+	margin:0 auto;
+	text-align: center;
+	line-height: 72px;
+	font-size: 30px;
+	color: #ffffff;
+	font-family: '黑体';
+	float: left;
+}
+
+.start{
+	float: right;
+	margin-right: 0px;
+	margin-top: 14px;
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	background:#f88a4d url(../images/icon-quit.png) center center no-repeat;
+}
+
+.message{
+	float: right;
+	margin-right: 20px;
+	margin-top: 14px;
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	background:#42bacc url(../images/icon-msg.png) center center no-repeat;
+}
+
+.hello{
+	float: right;
+	margin-right: 23px;
+	margin-top: 0px;
+	text-align: center;
+	line-height: 72px
+}
+
+.head_img{
+	float: right;
+	margin-right: 15px;
+	margin-top: 14px;
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	background: url(../images/eg-user.jpg) center center no-repeat;
+}
+
+
+.func{
+	float: left;
+	margin-left: 0px;
+	height: 44px;
+}
+
+.inputdiv{
+	float: left;
+	height: 44px;
+}
+
+.inputbox{
+	margin-top: 8px;
+	height: 28px;
+	align: center;
+	line-height: 44px;
+	width: 208px;
+	/*background-image:url(../images/search.png);
+    background-position: left center no-repeat; */
+}
+
+.search{
+	float: left;
+	margin-left: 6px;
+	margin-top: 9px;
+	width: 60px;
+	height: 28px;
+	text-align: center;
+	line-height: 28px;
+	background-color: #397ddb;
+	font-size: 13px;
+	color:#fff;
+	font-family: '微软雅黑';
+}
+
+.offlinediv{
+	float: left;
+	margin-left: 20px;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+    
+}
+
+.offline{
+	font-size: 12px;
+    color: #666;
+    font-family: '微软雅黑';
+}

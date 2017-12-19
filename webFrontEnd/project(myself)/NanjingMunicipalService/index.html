@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/plugins/jquery-3.2.1.js"></script>
+    <script src="js/plugins/mustache.js"></script>
+    <script src="js/plugins/pagination/mricode.pagination.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="js/plugins/pagination/mricode.pagination.css" rel="stylesheet" />
+    <!--<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>-->
+
+</head>
+<body>
+<div id="d1"></div>
+<div class="mian clearfix">
+    <!--头部区域-->
+    <div class="header clearfix">
+        <div class="header-tools clearfix">
+            <ul class="header-left clearfix">
+                <li class="left-item loc">南京市</li>
+                <li class="left-item weather">多云</li>
+                <li class=" left-item weather-img"><img src="images/Partly-Cloudy-Large.png" alt="南京市市政服务"
+                                                        class="left-item page-logo"></li>
+                <li class="left-item pm-value">PM2.5:125</li>
+            </ul>
+            <ul class="header-right clearfix">
+                <li class="right-item first-page">首页</li>
+                <li class="right-item">政务公开</li>
+                <li class="right-item">审批服务</li>
+                <li class="right-item item-than">公共资源交易</li>
+                <li class="right-item">12345热线</li>
+                <li class="right-user" name="username">谭清喜</li>
+                <div class="logout"></div>
+            </ul>
+        </div>
+    </div>
+    <!--内容区域-->
+    <div class="container content clearfix">
+        <div class="container header-logo-search clearfix">
+            <div class="logo"></div>
+            <div class="search clearfix">
+                <div class="input-btn clearfix">
+                    <input type="search-text" class="input" placeholder="请输入关键字/办件编号">
+                    <button class="search-btn btn-search"></button>
+                    <button class="search-btn btn-question">提问</button>
+                    <ul class="hot-search">
+                        <li class="hot-list hot-search-name">热搜：</li>
+                        <li class="hot-list">职业资格</li>
+                        <li class="hot-list">就业</li>
+                        <li class="hot-list">退休</li>
+                        <li class="hot-list">纳税</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--位置索引-->
+        <div class="con-coordinate clearfix">
+            <div class="accor accor-img"></div>
+            <div class="accor accor-info">首页 >&nbsp</div>
+            <div class="accor accor-option">审批服务</div>
+        </div>
+        <!--导航及工具表格-->
+        <div class="container con-tools clearfix">
+            <ul class="navs">
+                <li class="navs-item">事项选择</li>
+                <li class="navs-item">个人办事</li>
+                <li class="navs-item">企业办事</li>
+                <li class="navs-item">部门办事</li>
+                <li class="navs-item">按服务区域</li>
+            </ul>
+            <div class="navs-table clearfix">
+                <!--搜索框-->
+                <div class="navs-search clearfix">
+                    <input type="text" class="navs-input">
+                    <div class="navs-img"></div>
+                </div>
+                <!--表格图标-->
+                <table class="tool-table clearfix">
+                    <tr class="table-tr">
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon01.png" alt="司法公正"><br>
+                                <label class="table-txt">司法公正</label>
+                            </div>
+
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon02.png" alt="司法公正"><br>
+                                <label class="table-txt">执业资格</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon03.png" alt="司法公正"><br>
+                                <label class="table-txt">教育</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon04.png" alt="司法公正"><br>
+                                <label class="table-txt">交通</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon05.png" alt="司法公正"><br>
+                                <label class="table-txt">医疗</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon06.png" alt="司法公正"><br>
+                                <label class="table-txt">就业</label>
+                            </div>
+
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon07.png" alt="司法公正"><br>
+                                <label class="table-txt">文化体育</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon08.png" alt="司法公正"><br>
+                                <label class="table-txt">设立变更</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon09.png" alt="司法公正"><br>
+                                <label class="table-txt">名族宗教</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon10.png" alt="司法公正"><br>
+                                <label class="table-txt">退休养老</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon11.png" alt="司法公正"><br>
+                                <label class="table-txt">住房</label>
+                            </div>
+
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon12.png" alt="司法公正"><br>
+                                <label class="table-txt">纳税</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon13.png" alt="司法公正"><br>
+                                <label class="table-txt">等级开办</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon14.png" alt="司法公正"><br>
+                                <label class="table-txt">慈善</label>
+                            </div>
+                        </td>
+                        <td class="table-td">
+                            <div class="icon-txt">
+                                <img class="table-icon" src="images/p-icon15.png" alt="司法公正"><br>
+                                <label class="table-txt">文物保护</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--办件服务-->
+        <div class="office-pieces clearfix">
+            <div class="office-left">
+                <!--标题-->
+                <div class="office-publicity">
+                    <div class="office-publicity-line"></div>
+                    <span class="office-publicity-title">办件公示</span>
+                </div>
+                <!--表格数据-->
+                <table id="ajaxdata" class="office-table" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th class="office-table-th">办件编号</th>
+                        <th class="office-table-th">申请人/申请单位</th>
+                        <th class="office-table-th">办理部门</th>
+                        <th class="office-table-th">申请事项</th>
+                        <th class="office-table-th">收件时间</th>
+                        <th class="office-table-th">办件状态</th>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td class="office-table-td td-no">081512040090</td>-->
+                        <!--<td class="office-table-td td-unit">江苏省微型电脑应用协会</td>-->
+                        <!--<td class="office-table-td td-department">办理部门</td>-->
+                        <!--<td class="office-table-td td-matter">申请事项</td>-->
+                        <!--<td class="office-table-td td-sign-time">收件时间</td>-->
+                        <!--<td class="office-table-td td-state">办件状态</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td class="office-table-td td-no">办件编号</td>-->
+                        <!--<td class="office-table-td td-unit">申请人/申请单位</td>-->
+                        <!--<td class="office-table-td td-department">办理部门</td>-->
+                        <!--<td class="office-table-td td-matter">申请事项</td>-->
+                        <!--<td class="office-table-td td-sign-time">收件时间</td>-->
+                        <!--<td class="office-table-td td-state">办件状态</td>-->
+                    <!--</tr>-->
+                </table>
+                <!--分页-->
+                <div class="page-div">
+                    <div id="page" class="m-pagination"></div>
+                </div>
+            </div>
+            <div class="office-right">
+                <div class="channel green-channel">绿色通道</div>
+                <div class="channel the-query">并联审批查询</div>
+                <div class="office-query">
+                    <div class="query-title">
+                        <div class="query-line"></div>
+                        <div class="query-txt">办件查询</div>
+                    </div>
+                    <div class="query-entry">
+                        <label class="entry-title">办件编号：</label>
+                        <input type="text" class="entry-input">
+                        <button class="entry-submint">查询</button>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <div class="query-title">
+                        <div class="query-line"></div>
+                        <div class="query-txt">办件统计</div>
+                        <div class="date-query">
+                            <!--<div class="today">-->
+                                <a href="#" class="a-today">今天</a>
+                            <!--</div>-->
+                            <!--<div class="today">-->
+                                <a href="#" class="a-month">本月</a>
+                            <!--</div>-->
+                            <!--<div class="today">-->
+                                <a href="#" class="a-all">全部</a>
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="histogram"></div>
+                <div class="channel efficacy">效能统计</div>
+            </div>
+        </div>
+    </div>
+    <!--脚部区域-->
+    <div class="footer">
+        <div class="container footer-list clearfix">
+            <div class="footer-item nanjing-logo"></div>
+            <span class="footer-item principal">南京市政务服务办公室</span>
+            <span class="footer-item copyright">版权所有：南京市信息中心</span>
+            <span class="footer-item case-number">苏ICP备11074598-1</span>
+            <div class="footer-item organ"></div>
+        </div>
+    </div>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>
