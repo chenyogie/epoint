@@ -1,0 +1,5 @@
+[
+	{ id: "user", text: "系统菜单", iconCls: "icon-user"},
+	{ id: "addUser", pid: "user", text: "学生管理", iconCls: "icon-edit", url: "html/student/liststudent.html" },
+	{ id: "editUser", pid: "user", text: "成绩管理", iconCls: "icon-edit", url: " html/stumarkinfo/liststumarkinfo.html" }
+]

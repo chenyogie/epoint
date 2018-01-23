@@ -1,0 +1,5 @@
+[
+	{ id: "user", text: "系统菜单", iconCls: "icon-user"},
+	{ id: "addUser", pid: "user", text: "宠物信息管理", iconCls: "icon-edit", url: "html/pet/listpet.html" },
+	{ id: "editUser", pid: "user", text: "主人信息管理", iconCls: "icon-edit", url: " html/host/listhost.html" }
+]

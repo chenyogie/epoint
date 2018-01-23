@@ -1,0 +1,5 @@
+[
+	{ id: "user", text: "系统菜单", iconCls: "icon-user"},
+	{ id: "addUser", pid: "user", text: "歌曲信息管理", iconCls: "icon-edit", url: "html/song/listsong.html" },
+	{ id: "editUser", pid: "user", text: "点歌信息管理", iconCls: "icon-edit", url: "html/music/listmusic.html" }
+]

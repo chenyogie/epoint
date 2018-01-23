@@ -1,0 +1,5 @@
+﻿[
+	{ id: "user", text: "系统菜单", iconCls: "icon-user"},
+	{ id: "addUser", pid: "user", text: "学生信息管理", iconCls: "icon-edit", url: "static/html/student/datagrid.html" },
+	{ id: "editUser", pid: "user", text: "宿舍信息管理", iconCls: "icon-edit", url: "static/html/" }
+]

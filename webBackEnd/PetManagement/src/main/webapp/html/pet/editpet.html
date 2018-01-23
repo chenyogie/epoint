@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改宠物信息</title>
+<script src="../../scripts/boot.js" type="text/javascript"></script>
+<style type="text/css">
+html, body {
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	height: 100%;
+	overflow: hidden;
+}
+</style>
+</head>
+<body>
+	<form id="form1" method="post">
+		<input name="stuId" class="mini-hidden" />
+		<fieldset style="border: solid 1px #aaa; padding: 3px;">
+			<legend>学生基本信息</legend>
+			<div style="padding: 5px;">
+				<table style="table-layout: fixed;">
+					<tr>
+						<td style="width: 70px;">序号：</td>
+						<td style="width: 150px;"><input name="id" allowInput="false"
+							class="mini-textbox" required="true"/></td>
+						<td style="width: 70px;">昵称：</td>
+						<td style="width: 150px;"><input name="nickname" allowInput="false"
+							class="mini-textbox" required="true" emptyText="请输入姓名" /></td>
+					</tr>
+					<tr>
+						<td style="width: 70px;">性别：</td>
+						<td><select name="sex" class="mini-radiobuttonlist">
+								<option enabled="false" value="0">雄性</option>
+								<option enabled="false" value="1">雌性</option>
+						</select></td>
+						<td>年龄：</td>
+						<td style="width: 150px;"><input name="age"
+							class="mini-textbox" required="true"/></td>
+					</tr>
+					<tr>
+						<td>品种：</td>
+						<td><input name="type" class="mini-combobox"
+							valueField="id" textField="name"
+							data="[{id:'0',name:'小型宠物'},{id:'1',name:'中型宠物'},{id:'2',name:'大型宠物'}]" /></td>
+						<td>体重：</td>
+						<td><input name="weight" class="mini-textbox"></input></td>
+					</tr>
+					<tr>
+						<td>是否接种疫苗：</td>
+						<td>
+							<div id="isvaccinated" name="isvaccinated" class="mini-radiobuttonlist" textField="text" valueField="id"  value="1"
+    					data="[{id:'0',text:'是'},{id:'1',text:'否'}]">
+						
+						<!-- <input id="isvaccinated" name="isvaccinated"
+							class="mini-textbox" ></input> -->
+							
+							</td>
+						<td>备注：</td>
+						<td><input name="remark" class="mini-textarea"
+							style="width: 150;" /></td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
+		<div style="text-align: center; padding: 10px;">
+			<a class="mini-button" onclick="onOk"
+				style="width: 60px; margin-right: 20px;">确定</a> <a
+				class="mini-button" onclick="onCancel" style="width: 60px;">取消</a>
+		</div>
+	</form>
+	<script type="text/javascript">
+		mini.parse();
+		var form = new mini.Form("form1");
+		
+		function SaveData() {
+			var o = form.getData();
+			form.validate();
+			if (form.isValid() == false)
+				return; 
+			//var json = mini.encode([ o ]);要去掉中括号
+			var json = mini.encode(o);
+			$.ajax({
+				url : "../../updatepetaction",
+				type : 'post',
+				data : {
+					data : json
+				},
+				cache : false,
+				success : function(text) {
+					CloseWindow("save");
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert(jqXHR.responseText);
+					CloseWindow();
+				}
+			});
+		}
+
+		
+		//接收list页面传过来的stuId参数
+		function SetData(data) {
+			if (data.action == "edit") {
+				//跨页面传递的数据对象，克隆后才可以安全使用
+				data = mini.clone(data);
+
+				$.ajax({
+					url : "../../selectpetaction?id="+data.id,
+					cache : false,
+					success : function(text) {
+						//获取后台传递过来的json数据
+						var o = mini.decode(text);
+						//因为此时img元素还没有加载，所以不能直接用document.getElementById来获取
+						/* window.onload=function(){
+							var photo = "../../"+o.photo;
+							document.getElementById("#photo").src = photo;
+							console.log(document.getElementById("#photo").src);
+						} */
+						//将json数据填充到表格中
+						form.setData(o);
+						form.setChanged(false);
+					}
+				});
+			}
+		}
+
+		function GetData() {
+			var o = form.getData();
+			return o;
+		}
+		function CloseWindow(action) {
+			if (action == "close" && form.isChanged()) {
+				if (confirm("数据被修改了，是否先保存？")) {
+					return false;
+				}
+			}
+			if (window.CloseOwnerWindow)
+				return window.CloseOwnerWindow(action);
+			else
+				window.close();
+		}
+		function onOk(e) {
+			SaveData();
+		}
+		function onCancel(e) {
+			CloseWindow("cancel");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+[
+	{ id: "user", text: "系统菜单", iconCls: "icon-user"},
+	{ id: "addUser", pid: "user", text: "医生信息管理", iconCls: "icon-edit", url: "html/doctor/listdoctor.html" },
+	{ id: "editUser", pid: "user", text: "就诊管理", iconCls: "icon-edit", url: " html/patient/listpatient.html" }
+]

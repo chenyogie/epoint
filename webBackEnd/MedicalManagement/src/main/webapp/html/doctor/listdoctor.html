@@ -1,0 +1,280 @@
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>宠物管理系统</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script src="../../scripts/boot.js" type="text/javascript"></script>
+	<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+</style>
+</head>
+<body>
+	<div style="width: 100%;">
+		<div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 100%;"><a class="mini-button"
+						iconCls="icon-add" onclick="add()">增加</a> <a class="mini-button"
+						iconCls="icon-remove" onclick="remove()">删除</a></td>
+					<td style="white-space: nowrap;">
+					<input id="ktype" class="mini-combobox" style="width:120px;" textField="text" valueField="id" 
+    					data="[{id : 0 , text :'临床'},{id : 1,text : '中医'},{id : 2,text : '口腔'},{id : 3,text : '公共卫生'}]" 
+    					allowInput="true" emptyText="请选择执业类别" onvaluechanged="onChanged"/>    
+					<input id="kname" class="mini-textbox" emptyText="请输入医生姓名" style="width: 150px;"
+						onenter="onKeyEnter" /><a class="mini-button" onclick="search()">查询</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="mini-fit">
+		<div id="datagrid1" class="mini-datagrid"
+			style="width: 100%; height: 100%;" allowResize="true"
+			url="../../listdoctoraction" idField="id" multiSelect="true">
+			<div property="columns">
+				<!-- 选择按钮 -->
+				<div type="checkcolumn"></div>
+				<!-- 序号 -->
+				<div type="indexcolumn">序号</div>
+				<!-- 设置stuId属性控件不可见 -->
+				<div field="id" class="mini-hidden" visible="false"></div>
+				<div field="name" width="100" headerAlign="center" align="center">姓名</div>
+				<div field="sex" width="100" headerAlign="center"
+					renderer="onGenderRenderer" align="center">性别</div>
+				<div field="birth" width="100" headerAlign="center"
+					dateFormat="yyyy-MM-dd" align="center">出生日期</div>
+				<div field="docNative" width="100" headerAlign="center" align="center"
+					renderer="onNativeRenderer">籍贯</div>
+				<div field="politics" width="100" headerAlign="center" align="center"
+					renderer="onPoliticsRenderer">政治面貌</div>
+				<div field="departments" width="100" headerAlign="center" align="center">科室</div>
+				<div field="position" width="100" headerAlign="center" align="center">职务</div>
+				<div field="telephone" width="100" headerAlign="center" align="center">联系方式</div>
+				<div field="count" width="100" headerAlign="center" align="center"
+					renderer="onCountRenderer">看诊人数</div>
+				<div field="type" width="100" headerAlign="center"
+					renderer="onPrefessionRenderer" align="center">执业类别</div>
+				<div name="action" width="100" headerAlign="center" align="center"
+					renderer="onActionRenderer" cellStyle="padding:0;">操作</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		mini.parse();
+
+		var grid = mini.get("datagrid1");
+		grid.load();
+			
+		//打开新增子页面
+		function add() {
+			mini.open({
+				url : "html/doctor/adddoctor.html",
+				title : "添加医生",
+				width : 500,
+				height : 300,
+				onload : function() {
+					//这里不需要给添加页面传递任何参数
+				},
+				ondestroy : function(action) {
+					grid.reload();
+				}
+			});
+		}
+
+		//编辑学生
+		function edit() {
+			var row = grid.getSelected();
+			var id = row.id;
+			if (row) {
+				mini.open({
+					url : "html/doctor/editdoctor.html",
+					title : "编辑宠物信息",
+					width : 600,
+					height : 300,
+					onload : function() {
+						//获取到editstudent.html
+						var iframe = this.getIFrameEl();
+						//向弹出的页面传递的参数
+						var data = {action :"edit",id : id};
+						//将data设置到跳转后的页面上去
+						iframe.contentWindow.SetData(data);
+					},
+					ondestroy : function(action) {
+						grid.reload();
+					}
+				});
+
+			} else {
+				alert("请选中一条记录");
+			}
+
+		}
+		//删除当前选中的行记录（可能为多行记录）
+		function remove() {
+			//获取选中的行
+			var rows = grid.getSelecteds();
+			if (rows.length > 0) {
+				mini.confirm("确定删除选中记录？","提示信息",function(action){
+					if(action=="ok"){
+						var id = [];//构造一个数组，用于向后台传送数据
+						//遍历选中的行
+						for (var i = 0, l = rows.length; i < l; i++) {
+							//获取到第i行
+							var r = rows[i];
+							//将stuId属性封装到ids数组中
+							id.push(r.id);
+						}
+						//把ids数组解析成字符串，元素之间用逗号相隔
+						var ids = id.join("','");
+						grid.loading("操作中，请稍后......");
+						$.ajax({
+									url : "../../deletedoctoraction?ids=" + ids,
+									success : function(text) {
+										mini.alert(text,"提示信息",function(){
+										});
+										grid.reload();
+									},
+									error : function() {
+									}
+								});
+					}
+				});
+			} else {
+				mini.alert("请选中一条记录","提示信息",function(){});
+			}
+		}
+		
+		//当搜索区域中的品种改变时，触发搜索功能
+		function onChanged(){
+			search();
+		}
+		
+		//按照学生姓名搜索
+		function search() {
+			var ktype = mini.get("ktype").getValue();
+			var kname = mini.get("kname").getValue();
+			grid.load({
+				kname : kname,
+				ktype : ktype
+			});
+		}
+		function onKeyEnter(e) {
+			search();
+		}
+
+		//如果看诊人数大于20人，则背景显示红色
+		function onCountRenderer(e){
+			var val = e.value;
+			if(val > 20){
+				e.rowStyle = 'background-color:#FFFF00';
+			}
+			return val;
+		}
+		
+		//去掉二级联动产生的分隔符“-”
+		function onNativeRenderer(e){
+			var arr = e.value.split('-');
+			return arr[0]+arr[1];
+		}
+		
+		var Politics = [ {
+			id : 0,
+			text : '共产党员'
+		}, {
+			id : 1,
+			text : '国民党员'
+		}, {
+			id : 2,
+			text : '群众'
+		}  ];
+		function onPoliticsRenderer(e) {
+			for (var i = 0, l = Politics.length; i < l; i++) {
+				var g = Politics[i];
+				if (g.id == e.value)
+					return g.text;
+			}
+			return "未录入";
+		}
+		
+		//转换：将性别的数字表现形式转换成为中文的表现形式
+		var Genders = [ {
+			id : 0,
+			text : '男'
+		}, {
+			id : 1,
+			text : '女'
+		} ];
+		function onGenderRenderer(e) {
+			for (var i = 0, l = Genders.length; i < l; i++) {
+				var g = Genders[i];
+				if (g.id == e.value)
+					return g.text;
+			}
+			return "未录入";
+		}
+
+		//同理：将品种的数字表现形式转换为中文的表现形式
+		var prefessions = [ {
+			id : 0,
+			text : '临床'
+		}, {
+			id : 1,
+			text : '中医'
+		}, {
+			id : 2,
+			text : '口腔'
+		}, {
+			id : 3,
+			text : '公共卫生'
+		} ];
+		function onPrefessionRenderer(e) {
+			for (var i = 0, l = prefessions.length; i < l; i++) {
+				var g = prefessions[i];
+				if (g.id == e.value)
+					return g.text;
+			}
+			return "未录入";
+		}
+
+		//给每行数据后面添加编辑、删除按钮
+		function onActionRenderer(e) {
+			var grid = e.sender;
+			var record = e.record;
+			var uid = record._uid;
+			var rowIndex = e.rowIndex;
+			var s = ' <a class="Edit_Button" href="javascript:edit()" >编辑&nbsp; </a>'
+					+ ' <a class="Delete_Button" href="javascript:delRow(\''
+					+ uid + '\')">&nbsp;删除</a>';
+			return s;
+		}
+		//删除当前行数据
+		function delRow(row_uid) {
+			var row = grid.getSelected();
+			var ids = row.id;
+			if (row) {
+				mini.confirm("确定删除此记录？", "提醒", function(action){
+					if(action=="ok"){
+						$.ajax({
+							url : "../../deletedoctoraction?ids=" + ids,
+							success : function(text) {
+								mini.alert(text,"提示信息",function(){});
+								grid.reload();
+							},
+							error : function() {
+							}
+						})
+					}
+				});
+			}
+		}
+	</script>
+</body>
+</html>

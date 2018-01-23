@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<c3p0-config>
+	<!-- ???? -->
+	<default-config>
+		<!-- ???? -->
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/accommodationmanagement</property>
+		<property name="user">root</property>
+		<property name="password">802134</property>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+
+		<!-- ????? -->
+		<property name="initialPoolSize">5</property>
+		<property name="maxPoolSize">12</property>
+		<!--<property name="checkoutTimeout">5000</property>-->
+		<property name="minPoolSize">3</property>
+	</default-config>
+</c3p0-config>

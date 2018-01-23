@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>添加课程</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+<script src="../../scripts/boot.js" type="text/javascript"></script>
+
+
+<style type="text/css">
+html, body {
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	height: 100%;
+	overflow: hidden;
+}
+</style>
+</head>
+<body>
+	<form id="form" method="post">
+		<fieldset style="border: solid 1px #aaa; padding: 3px;">
+			<div style="padding: 5px;">
+				<table style="table-layout: fixed;">
+					<tr>
+						<td style="width: 70px;">姓名：</td>
+						<td style="width: 150px;"><input name="name" class="mini-textbox" required="true"></input></td>
+						<td style="width: 70px;">宠物编号：</td>
+						<td style="width: 150px;"><input id="btnEdit1" name="petid"  class="mini-buttonedit" onbuttonclick="onButtonEdit" textName="b"/></td>
+					</tr>
+					<tr>
+						<td>出生日期：</td>
+						<td><input name="birth" class="mini-datepicker"
+						required="true" emptyText="请选择日期" ondrawdate="onDrawDate"/></td>
+						<td style="width: 70px;">性别：</td>
+						<td><select name="sex" class="mini-radiobuttonlist">
+							<option value="0" selected="selected">男</option>
+							<option value="1">女</option>
+					</select></td>
+					</tr>
+					<tr>
+						<td style="width: 70px;">身份证号：</td>
+						<td style="width: 150px;"><input name="identify" class="mini-textbox"></input></td>
+						<td style="width: 70px;">家庭住址：</td>
+						<td style="width: 150px;"><input name="address" class="mini-textbox" required="true"></input></td>
+					</tr>
+					<tr>
+						<td style="width: 70px;">电话：</td>
+						<td style="width: 150px;"><input name="telphone" class="mini-textbox"></input></td>
+						<td style="width: 70px;">邮箱：</td>
+						<td style="width: 150px;"><input name="email" class="mini-textbox" required="true"></input></td>
+					</tr>
+					<tr>
+						<td style="width: 70px;">其他说明：</td>
+						<td colspan="3"><textarea name="note" class="mini-textarea" style="width: 380px;"></textarea></td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
+		<div style="text-align: center; padding: 10px;">
+			<a class="mini-button" onclick="onOk"
+				style="width: 60px; margin-right: 20px;">确定</a> <a
+				class="mini-button" onclick="onCancel" style="width: 60px;">取消</a>
+		</div>
+	</form>
+	<script type="text/javascript">
+		mini.parse();
+		
+		//selectGrid的返回值设定
+		function onButtonEdit(e) {
+            var btnEdit = this;
+            mini.open({
+                url: "html/host/selectpetid.html",
+                title: "选择列表",
+                width: 650,
+                height: 380,
+                ondestroy: function (action) {
+                    //if (action == "close") return false;
+                    if (action == "ok") {
+                        var iframe = this.getIFrameEl();
+                        var data = iframe.contentWindow.GetData();
+                        data = mini.clone(data);    //必须
+                        if (data) {
+                            btnEdit.setValue(data.id);
+                            btnEdit.setText(data.nickname);
+                        }
+                    }
+
+                }
+            });
+
+        }
+		
+		
+		var form = new mini.Form("form");
+		//添加课程的action
+		function SaveData(){
+			var o = form.getData();
+			form.validate();
+			//表单是否验证通过
+			if (form.isValid() == false)
+				return;
+			var json = mini.encode(o);
+			$.ajax({
+				url:'../../addhostaction',
+				type:'post',
+				data:{data : json},
+				success:function(message){
+					mini.alert(message,"提示信息",function(){
+						CloseWindow();
+					});
+				},
+				error:function(){
+					
+				}
+			});
+		}
+		
+		function onOk(){
+			SaveData();
+			CloseOwnerWindow();
+		}
+		function CloseWindow(action) {
+			if (action == "close" && form.isChanged()) {
+				if (confirm("数据被修改了，是否先保存？")) {
+					return false;
+				}
+			}
+			if (window.CloseOwnerWindow)
+				return window.CloseOwnerWindow(action);
+			else
+				window.close();
+		}
+		
+		 function onDrawDate(e) {
+	            var date = e.date;
+	            var d = new Date();
+
+	            if (date.getTime() < d.getTime()) {
+	                e.allowSelect = false;
+	            }
+	        }
+	
+		</script>
+</body>
+</html>

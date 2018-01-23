@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>学生信息管理系统</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script src="../../scripts/boot.js" type="text/javascript"></script>
+	<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+</style>
+</head>
+<body>
+	<div style="width: 100%;">
+		<div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 100%;"><a class="mini-button"
+						iconCls="icon-add" onclick="add()">增加成绩</a></td>
+					<td style="white-space: nowrap;">
+					<input id="kName" class="mini-textbox" emptyText="请输入姓名" style="width: 150px;" onenter="onKeyEnter" />
+					<input id="kDate" class="mini-datepicker" emptyText="请选择时间" timeFormat="yyyy-MM-dd" 
+						   style="width: 150px;" onenter="onKeyEnter" />
+					<a class="mini-button" onclick="search()">查询</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="mini-fit">
+		<div id="datagrid1" class="mini-datagrid"
+			style="width: 100%; height: 100%;" allowResize="true"
+			url="../../liststumarkaction?method=liststumark" idField="id" multiSelect="true">
+			<div property="columns">
+				<!-- 选择按钮 -->
+				<div type="checkcolumn"></div>
+				<!-- 序号 -->
+				<div type="indexcolumn">序号</div>
+				<!-- 设置stuId属性控件不可见 -->
+				<div field="markId" visible="false" class="mini-hidden"></div>
+				<div field="stuName" width="120" headerAlign="center" align="center">姓名</div>
+				<div field="courseName" width="120" headerAlign="center" align="center">课程名称</div>
+				<div field="baseScore" width="100" headerAlign="center" align="center">平时成绩</div>
+				<div field="testScore" width="120" headerAlign="center" renderer="onGenderRenderer" align="center">考核成绩</div>
+				<div field="finalScore" width="120" headerAlign="center" align="center">最终成绩</div>
+				<div field="note" width="120" headerAlign="center" align="center">其他信息</div>
+				<div name="action" width="120" headerAlign="center" align="center" renderer="onActionRenderer" cellStyle="padding:0;">操作</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		mini.parse();
+
+		var grid = mini.get("datagrid1");
+		grid.load();
+		
+		//添加成绩
+		function add() {
+			mini.open({
+				url : "html/stumarkinfo/addstumarkinfo.html",
+				title : "添加学生",
+				width : 500,
+				height : 300,
+				onload : function() {
+					//这里不需要给添加页面传递任何参数
+					grid.reload();
+				},
+				ondestroy : function(action) {
+					grid.reload();
+				}
+			});
+		}
+		//按照学生姓名搜索
+		function search() {
+			var kDate = mini.get("kDate").getFormValue();
+			var kName = mini.get("kName").getValue();
+			
+			grid.load({
+				kDate : kDate,
+				kName : kName
+			});
+		}
+		function onKeyEnter(e) {
+			search();
+		}
+		//给每行数据后面添加删除按钮
+		function onActionRenderer(e) {
+			var grid = e.sender;
+			var record = e.record;
+			var uid = record._uid;
+			var rowIndex = e.rowIndex;
+			var s = ' <a class="Delete_Button" href="javascript:delRow(\''
+					+ uid + '\')">&nbsp;删除</a>';
+			return s;
+		}
+		//删除当前行数据
+		function delRow(row_uid) {
+			var row = grid.getSelected();
+			var markId = row.markId;
+			if (row) {
+				mini.confirm("确定删除此记录？", "提醒", function(action){
+					if(action=="ok"){
+						$.ajax({
+							url : "../../deletestumarkinfoaction?id=" + markId,
+							success : function(text) {
+								mini.alert(text,"提示信息",function(){});
+								grid.reload();
+							},
+							error : function() {
+							}
+						});
+					}
+				});
+			}
+		}
+	</script>
+</body>
+</html>
